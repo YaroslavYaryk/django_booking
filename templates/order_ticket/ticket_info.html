@@ -1,0 +1,42 @@
+{% extends "../booking/base.html" %}
+
+{% block link %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'order_ticket/css/ticket_info.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="register-container row">
+  <div class="form-title">
+    <h4 class="form-header">Ticket info</h4>
+  </div>
+
+  <div class="form-container col s12 m8">
+    <div class="search-tickets-container row">
+      <ul class="collection">
+        <li class="collection-item">Full name:
+          {{ordered_ticket.customer_name}} {{ordered_ticket.customer_surname}} {{ordered_ticket.customer_patronymic}}
+        </li>
+        <li class="collection-item">
+          Route:<i class="material-icons tiny">place</i>{{ordered_ticket.start_point}} <i
+            class="material-icons tiny">arrow_forward</i> <i
+            class="material-icons tiny">place</i>{{ordered_ticket.end_point}}
+        </li>
+        <li class="collection-item">
+          Train: {{ordered_ticket.ticket.train.name}}
+        </li>
+        <li class="collection-item">
+          Railcar: {{ordered_ticket.ticket.railcar_number}}
+        </li>
+        <li class="collection-item">
+          Seat: {{ordered_ticket.ticket.seat}}
+        </li>
+        <li class="collection-item">
+          Price: {{ordered_ticket.price}} грн
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,35 @@
+{% extends "../booking/base.html" %}
+
+
+{% block link %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'search_ticket/css/get_avaluable_routs.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-routes">
+  <div>
+    <span class="routes-point">Found routes:<i class="material-icons tiny">place</i>{{start}} <i class="material-icons tiny">arrow_forward</i> <i class="material-icons tiny">place</i>{{end}}</span>
+  </div>
+
+  <div class="container-routes-get">
+    {% for rout in all_routs %}
+    <div class="train-container">
+      {% load static %}
+      <img class="train-container-img" src="{% static 'search_ticket/img/DIESEL.png' %}" alt="Train">
+      <p class="train-container-name">{{rout.route}}</p>
+      <div class="train-container-buy">
+        <a class="justify-content-end waves-effect waves-light btn btn-buy"
+        href="{% url 'order_train' start=start end=end  rout_slug=rout.route.slug %}"><i class="material-icons left">attach_money</i>Buy
+        ticket</a>
+      </div>
+    </div>
+    {% empty %}
+    <div class="empty-container">
+      <img src="{% static 'search_ticket/img/box.png' %}" alt="empty box">
+      <p class="empty">It feels like there is no any route for this direction</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

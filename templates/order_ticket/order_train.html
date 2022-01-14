@@ -1,0 +1,30 @@
+{% extends "../booking/base.html" %}
+
+
+{% block link %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'order_ticket/css/order_train.css' %}">
+	<!-- <script src="{% static 'order_ticket/js/order_train.js' %}"></script> -->
+{% endblock %}
+
+{% block content %}
+<div class="container-verifi">
+  <p class="container-verifi-header">Verification code</p>
+  <div class="container-verifi-code">
+    {% for train in trains %}
+    <span>
+      {{train.slug}}
+    </span>
+  {% endfor %}
+  </div>
+  <form action="{% url 'order_train' start end route_slug  %}" method="POST" class="verifi-form row">
+    {% csrf_token %}
+    <div class="col s8">
+      <input type="text" name="train" id="id">
+      <p>*enter what you see above</p>
+    </div>
+    <button type="submit" class="waves-effect waves-light btn col s4" id="send-btn">send</button>
+  </form>  
+  {# <a href="{% url 'order_railcar' route_slug  %}">BUTTON</a> #}
+</div>
+{% endblock content %}
