@@ -6,6 +6,7 @@
 ![](photoes/booking_ordered_tickets.png)
 Perfect application for for finfing and ordering tickets on train in Ukraine,
 whole stantion, many routes, registration, login, and so on
+To see the whole site you can visit [DjangoBooking](https://django-booking-service.herokuapp.com/)
 
 To install this repo you need to do following steps:
 
